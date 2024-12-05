@@ -23,7 +23,7 @@ public class EmailStaticMessageUtil {
      *
      * @return "journée" if it is before 6pm, "soirée" otherwise.
      */
-    private String getDayName() {
+    private static String getDayName() {
         LocalDate now = LocalDate.now();
         return now.isBefore(LocalDate.parse("18:00")) ? "journée" : "soirée";
     }
