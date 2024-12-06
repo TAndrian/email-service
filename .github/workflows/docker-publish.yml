@@ -34,6 +34,4 @@ jobs:
         with:
           push: true
           context: .
-          tags: |
-            ghcr.io/${{ github.repository }}/my-image:${{ env.version }}
-            ghcr.io/${{ github.repository }}/my-image:latest
+          tags: ghcr.io/${{ github.repository }}/email-service:latest
