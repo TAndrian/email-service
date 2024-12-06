@@ -25,10 +25,10 @@ public class EmailServiceImpl implements EmailService {
         String emailForwarder = emailToSend.emailForwarder();
         String emailSubject = emailToSend.emailSubject();
 
+        message.setTo(MY_EMAIL);
         message.setFrom(emailForwarder);
         message.setSubject(emailSubject);
         message.setText(emailToSend.emailContent());
-        message.setReplyTo(MY_EMAIL);
         mailSender.send(message);
         sendNoReplyEmail(emailForwarder, emailSubject);
     }
@@ -45,10 +45,11 @@ public class EmailServiceImpl implements EmailService {
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
-        helper.setSubject(replySubject);
-        helper.setText(NO_REPLY_CONTENT);
-        helper.setReplyTo(emailRecipient);
         helper.setFrom(MY_EMAIL);
+        helper.setTo(emailRecipient);
+        helper.setReplyTo(emailRecipient);
+        helper.setSubject(replySubject);
+        helper.setText(NO_REPLY_CONTENT, true);
         mailSender.send(mimeMessage);
     }
 }

@@ -2,14 +2,12 @@ package com.project.email_service.util;
 
 import lombok.experimental.UtilityClass;
 
-import java.time.LocalDate;
+import java.time.LocalTime;
 
 @UtilityClass
 public class EmailStaticMessageUtil {
     public static final String NO_REPLY_CONTENT =
             "<strong>Merci de ne pas répondre</strong>" +
-                    "<br/>" +
-                    "<br/>" +
                     "<p>Bonjour Madame, Monsieur, </p>" +
                     "<br/>" +
                     "<p>J'espère que vous allez bien.</p>" +
@@ -24,7 +22,8 @@ public class EmailStaticMessageUtil {
      * @return "journée" if it is before 6pm, "soirée" otherwise.
      */
     private static String getDayName() {
-        LocalDate now = LocalDate.now();
-        return now.isBefore(LocalDate.parse("18:00")) ? "journée" : "soirée";
+        LocalTime now = LocalTime.now();
+        LocalTime eveningThreshold = LocalTime.parse("18:00");
+        return now.isBefore(eveningThreshold) ? "journée" : "soirée";
     }
 }
