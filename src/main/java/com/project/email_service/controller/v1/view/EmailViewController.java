@@ -21,12 +21,11 @@ import static com.project.email_service.controller.v1.Paths.SEND_EMAIL;
 public class EmailViewController {
 
     public static final String EMAIL_FORM = "email-form";
-    public static final String EMAIL_SEND = "email-send";
+    public static final String EMAIL_SENT = "email-sent";
     private EmailService emailService;
 
     @GetMapping(EMAIL_FORM_VIEW)
     public String emailFormView(Model model) {
-
         // Empty email DTO to store data from the form.
         EmailDTO emailToSend = new EmailDTO(null, null, null);
 
@@ -35,11 +34,8 @@ public class EmailViewController {
     }
 
     @PostMapping(EMAIL_FORM_VIEW + SEND_EMAIL)
-    public String sendEmailView(
-            Model model,
-            @ModelAttribute("emailToSend") EmailDTO emailToSend) throws MessagingException {
-
+    public String sendEmailView(@ModelAttribute("emailToSend") EmailDTO emailToSend) throws MessagingException {
         emailService.sendEmail(emailToSend);
-        return EMAIL_SEND;
+        return EMAIL_SENT;
     }
 }

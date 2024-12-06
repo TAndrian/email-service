@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="../static/css/style.css"
+          th:href="@{/css/style.css}" media="screen,projection"/>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../static/css/materialize.min.css"
+          th:href="@{/css/materialize.min.css}" media="screen,projection"/>
+    <title>Page not found</title>
+</head>
+<body>
+
+<div class="row container center-align">
+    <h3>Sorry, we couldn't find the page your were looking for.</h3>
+    <p>Click the button below to return home.</p>
+    <a th:href="@{/view/v1/form}" class="btn btn-floating btn-large pulse"><i class="material-icons">home</i></a>
+</div>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" th:src="@{/js/materialize.min.js}"></script>
+</body>
+</html>
