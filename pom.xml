@@ -30,7 +30,7 @@
         <java.version>17</java.version>
         <sonar.projectKey>${env.SONAR_PROJECT_KEY}</sonar.projectKey>
         <sonar.organization>${env.SONAR_ORGANIZATION}</sonar.organization>
-        <sonar.host.url>${env.SONAR_HOST_URL}</sonar.host.url>
+        <sonar.host.url>${env.SONAR_HOST}</sonar.host.url>
         <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
     <dependencies>
