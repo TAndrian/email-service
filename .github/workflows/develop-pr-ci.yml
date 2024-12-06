@@ -49,10 +49,11 @@ jobs:
             -Dsonar.organization=your-${{github.repository_variables.SONAR_ORGANIZATION }}"
             -Dsonar.host.url=${{ github.repository_variables.SONAR_HOST }}"
             -Dsonar.qualitygate.wait=true
-      - name: OWASP Dependency-Check
-        uses: jeremylong/gha-dependency-check@v6
+
+      # OWASP Dependency-Check
+      - name: Run OWASP Dependency-Check
+        uses: dependency-check-action/dependency-check-action@v3
         with:
-          format: HTML
-          fail_on_cvss: 7
-          output_directory: dependency-check-report
-          scan: .
+          fail-on-high: true
+          format: "HTML"
+          output-directory: dependency-check-report
