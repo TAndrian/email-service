@@ -32,7 +32,9 @@
         <sonar.organization>tandrian</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-        <sonar.exclusions>**/resources/static/*, **/util/*, **/view/ErrorViewHandlerController.java</sonar.exclusions>
+        <sonar.exclusions>**/resources/static/*, **/util/*, **/view/ErrorViewHandlerController.java,
+            **/RedirectToDefaultViewController.java
+        </sonar.exclusions>
     </properties>
     <dependencies>
         <dependency>
