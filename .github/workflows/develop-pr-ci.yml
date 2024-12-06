@@ -56,10 +56,22 @@ jobs:
             -Dsonar.host.url=${{ github.repository_variables.SONAR_HOST }}"
             -Dsonar.qualitygate.wait=true
 
-      # OWASP Dependency-Check
+      # Install Dependency-Check
+      - name: Install Dependency-Check
+        run: |
+          sudo apt-get install -y wget
+          wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.0.1/dependency-check-8.0.1-release.zip
+          unzip dependency-check-8.0.1-release.zip -d dependency-check
+          sudo apt-get install -y openjdk-11-jre # Make sure Java 11 or later is installed
+
+      # Run OWASP Dependency-Check
       - name: Run OWASP Dependency-Check
-        uses: dependency-check-action/dependency-check-action@v3
+        run: |
+          dependency-check/bin/dependency-check.sh --project "My Spring Boot App" --scan . --format "HTML" --out "dependency-check-report"
+
+      # Optionally, you can upload the Dependency-Check report as an artifact
+      - name: Upload Dependency-Check Report
+        uses: actions/upload-artifact@v3
         with:
-          fail-on-high: true
-          format: "HTML"
-          output-directory: dependency-check-report
+          name: dependency-check-report
+          path: dependency-check-report
