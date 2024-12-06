@@ -10,6 +10,9 @@ on:
   pull_request:
     branches:
       - develop
+  push:
+    branches:
+      - develop
 jobs:
   build-test-analyze:
     runs-on: ubuntu-latest
