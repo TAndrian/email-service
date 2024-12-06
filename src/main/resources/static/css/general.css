@@ -1,7 +1,11 @@
 *{
     text-decoration: none;
+    text-transform: none;
 }
 body {
     box-sizing: border-box;
     padding: 30px;
+}
+button {
+    text-transform: none !important;
 }
