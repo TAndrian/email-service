@@ -3,7 +3,7 @@ package com.project.email_service.controller.v1.view;
 import com.project.email_service.dto.EmailDTO;
 import com.project.email_service.service.EmailService;
 import jakarta.mail.MessagingException;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +17,12 @@ import static com.project.email_service.controller.v1.Paths.SEND_EMAIL;
 
 @Controller
 @RequestMapping(BASE_VIEW_URL)
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class EmailViewController {
 
     public static final String EMAIL_FORM = "email-form";
     public static final String EMAIL_SENT = "email-sent";
-    private EmailService emailService;
+    private final EmailService emailService;
 
     @GetMapping(EMAIL_FORM_VIEW)
     public String emailFormView(Model model) {

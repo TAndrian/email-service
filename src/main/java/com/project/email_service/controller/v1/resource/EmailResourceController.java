@@ -3,7 +3,7 @@ package com.project.email_service.controller.v1.resource;
 import com.project.email_service.dto.EmailDTO;
 import com.project.email_service.service.EmailService;
 import jakarta.mail.MessagingException;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,10 +21,10 @@ import static com.project.email_service.controller.v1.Paths.SEND_EMAIL;
         produces = MediaType.APPLICATION_JSON_VALUE,
         consumes = MediaType.APPLICATION_JSON_VALUE
 )
-@AllArgsConstructor
-public class EmailController {
+@RequiredArgsConstructor
+public class EmailResourceController {
 
-    private EmailService emailService;
+    private final EmailService emailService;
 
     @PostMapping(SEND_EMAIL)
     @ResponseStatus(HttpStatus.OK)
