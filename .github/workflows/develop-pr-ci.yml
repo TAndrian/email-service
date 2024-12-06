@@ -48,13 +48,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_CLOUD_TOKEN }}
-          SONAR_PROJECT_KEY: ${{ github.repository_variables.SONAR_PROJECT_KEY }}
+          SONAR_PROJECT_KEY: ${{ vars.SONAR_PROJECT_KEY }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=$SONAR_PROJECT_KEY
 
       - name: Check Quality Gate status
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_CLOUD_TOKEN }}
-          SONAR_PROJECT_KEY: ${{ github.repository_variables.SONAR_PROJECT_KEY }}
+          SONAR_PROJECT_KEY: ${{ vars.SONAR_PROJECT_KEY }}
 
         run: |
           STATUS=$(curl -s "https://sonarcloud.io/api/qualitygates/project_status?projectKey=$SONAR_PROJECT_KEY" -u $SONAR_TOKEN:)
